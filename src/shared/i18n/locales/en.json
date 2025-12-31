@@ -1,0 +1,29 @@
+{
+  "search": {
+    "placeholder": "Enter city name",
+    "button": "Search",
+    "notFound": "City not found, try another one",
+    "loading": "Loading..."
+  },
+  "weather": {
+    "current": "Current weather",
+    "hourly": "Hourly forecast",
+    "daily": "Daily forecast",
+    "humidity": "Humidity",
+    "windSpeed": "Wind speed",
+    "precipitation": "Precipitation",
+    "backToSearch": "Back to search",
+    "location": "Location"
+  },
+  "settings": {
+    "temperature": "Temperature",
+    "windSpeed": "Wind speed",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "history": {
+    "title": "Search history",
+    "empty": "History is empty"
+  }
+}
+

@@ -1,0 +1,29 @@
+{
+  "search": {
+    "placeholder": "Введите название города",
+    "button": "Поиск",
+    "notFound": "Город не найден, попробуйте другой",
+    "loading": "Загрузка..."
+  },
+  "weather": {
+    "current": "Текущая погода",
+    "hourly": "Почасовой прогноз",
+    "daily": "Ежедневный прогноз",
+    "humidity": "Влажность",
+    "windSpeed": "Скорость ветра",
+    "precipitation": "Осадки",
+    "backToSearch": "Назад к поиску",
+    "location": "Местоположение"
+  },
+  "settings": {
+    "temperature": "Температура",
+    "windSpeed": "Скорость ветра",
+    "language": "Язык",
+    "theme": "Тема"
+  },
+  "history": {
+    "title": "История поиска",
+    "empty": "История пуста"
+  }
+}
+
