@@ -45,7 +45,7 @@ export function HomePage() {
             <motion.div variants={itemVariants}>
               <VStack spacing={4} textAlign="center" color="white" mb={8}>
                 <Heading size="2xl" fontWeight="bold">
-                  Weather Forecast App
+                  Weather App by gmt9n
                 </Heading>
                 <Text fontSize="lg" opacity={0.9}>
                   Узнайте прогноз погоды в любом городе мира

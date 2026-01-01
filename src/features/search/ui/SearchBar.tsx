@@ -61,7 +61,7 @@ export function SearchBar() {
 
   return (
     <Box position="relative" w="100%" maxW="600px" mx="auto">
-      <InputGroup size="lg">
+      <InputGroup size="lg" gap={"5px"}>
         <Input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -71,9 +71,10 @@ export function SearchBar() {
           borderColor={borderColor}
           _focus={{ borderColor: 'blue.500' }}
         />
-        <InputRightElement width="4.5rem">
+        {/* <InputRightElement width="4.5rem"> */}
           <Button
-            h="1.75rem"
+            h="3rem"
+            w="120px"
             size="sm"
             onClick={handleSearch}
             isLoading={isLoading}
@@ -81,7 +82,7 @@ export function SearchBar() {
           >
             {t('search.button')}
           </Button>
-        </InputRightElement>
+{/*         </InputRightElement> */}
       </InputGroup>
 
       {showSuggestions && cities && cities.length > 0 && (
