@@ -4,15 +4,13 @@ import {
   Input,
   Button,
   InputGroup,
-  InputRightElement,
-  VStack,
   List,
   ListItem,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useLazySearchCityQuery } from '@/entities/city/api/geocodingApi'
-import { useAppDispatch, useAppSelector } from '@/app/store'
+import { useAppDispatch } from '@/app/store'
 import { setSelectedCity } from '@/entities/weather/model/weatherSlice'
 import { addCity } from '../model/searchHistorySlice'
 import type { City } from '@/entities/city/model/types'
@@ -71,7 +69,6 @@ export function SearchBar() {
           borderColor={borderColor}
           _focus={{ borderColor: 'blue.500' }}
         />
-        {/* <InputRightElement width="4.5rem"> */}
           <Button
             h="3rem"
             w="120px"
@@ -82,7 +79,6 @@ export function SearchBar() {
           >
             {t('search.button')}
           </Button>
-{/*         </InputRightElement> */}
       </InputGroup>
 
       {showSuggestions && cities && cities.length > 0 && (

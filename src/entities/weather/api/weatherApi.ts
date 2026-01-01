@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { WeatherData } from '../model/types'
+import type { OpenMeteoResponse, OpenMeteoError } from './types'
 
 const OPEN_METEO_BASE_URL = 'https://api.open-meteo.com/v1'
 
@@ -21,7 +22,12 @@ export const weatherApi = createApi({
           forecast_days: 14,
         },
       }),
-      transformResponse: (response: any): WeatherData => {
+      transformResponse: (response: OpenMeteoResponse): WeatherData => {
+        // Валидация ответа
+        if (!response.current || !response.hourly || !response.daily) {
+          throw new Error('Invalid API response: missing required data')
+        }
+
         return {
           current: {
             temperature: response.current.temperature_2m,
@@ -46,6 +52,18 @@ export const weatherApi = createApi({
             precipitationSum: response.daily.precipitation_sum,
           },
         }
+      },
+      transformErrorResponse: (response: { status: number; data?: OpenMeteoError }) => {
+        // Обработка ошибок API
+        if (response.data?.error) {
+          return {
+            status: response.status,
+            data: {
+              message: response.data.reason || 'Unknown error from weather API',
+            },
+          }
+        }
+        return response
       },
     }),
   }),

@@ -7,6 +7,10 @@ export interface City {
   displayName: string
 }
 
+/**
+ * @deprecated Используйте NominatimGeocodingResponse из @/entities/city/api/types
+ * Оставлено для обратной совместимости
+ */
 export interface GeocodingResponse {
   place_id: number
   display_name: string
