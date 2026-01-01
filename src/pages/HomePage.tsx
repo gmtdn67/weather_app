@@ -4,6 +4,7 @@ import { SearchBar } from '@/features/search/ui/SearchBar'
 import { GeolocationButton } from '@/features/geolocation/ui/GeolocationButton'
 import { SearchHistory } from '@/widgets/SearchHistory/ui/SearchHistory'
 import { Settings } from '@/widgets/Settings/ui/Settings'
+import { useTranslation } from 'react-i18next'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +29,9 @@ const itemVariants = {
 }
 
 export function HomePage() {
+
+  const {t} = useTranslation()
+
   return (
     <Box
       minH="100vh"
@@ -48,7 +52,7 @@ export function HomePage() {
                   Weather App by gmt9n
                 </Heading>
                 <Text fontSize="lg" opacity={0.9}>
-                  Узнайте прогноз погоды в любом городе мира
+                  {t('search.description')}
                 </Text>
               </VStack>
             </motion.div>

@@ -74,14 +74,14 @@ export function Settings() {
                 colorScheme={settings.windSpeedUnit === 'kmh' ? 'blue' : 'gray'}
                 onClick={() => dispatch(setWindSpeedUnit('kmh'))}
               >
-                км/ч
+                {t('settings.kmh')}
               </Button>
               <Button
                 size="sm"
                 colorScheme={settings.windSpeedUnit === 'ms' ? 'blue' : 'gray'}
                 onClick={() => dispatch(setWindSpeedUnit('ms'))}
               >
-                м/с
+                {t('settings.ms')}
               </Button>
             </HStack>
           </Box>
@@ -109,21 +109,21 @@ export function Settings() {
                 colorScheme={settings.theme === 'light' ? 'blue' : 'gray'}
                 onClick={() => handleThemeChange('light')}
               >
-                Светлая
+                {t('settings.light')}
               </Button>
               <Button
                 size="sm"
                 colorScheme={settings.theme === 'dark' ? 'blue' : 'gray'}
                 onClick={() => handleThemeChange('dark')}
               >
-                Темная
+              {t('settings.dark')}
               </Button>
               <Button
                 size="sm"
                 colorScheme={settings.theme === 'system' ? 'blue' : 'gray'}
                 onClick={() => handleThemeChange('system')}
               >
-                Системная
+               {t('settings.system')}
               </Button>
             </HStack>
           </Box>

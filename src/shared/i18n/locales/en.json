@@ -3,7 +3,8 @@
     "placeholder": "Enter city name",
     "button": "Search",
     "notFound": "City not found, try another one",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "description": "Get the weather forecast for any city in the world"
   },
   "weather": {
     "current": "Current weather",
@@ -19,7 +20,12 @@
     "temperature": "Temperature",
     "windSpeed": "Wind speed",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "kmh": "km/h",
+    "ms": "m/s",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "history": {
     "title": "Search history",
