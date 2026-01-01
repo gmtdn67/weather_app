@@ -1,3 +1,4 @@
+import { memo, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Box, Container, VStack, Button, Heading, HStack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
@@ -21,24 +22,27 @@ const transition = {
   ease: 'easeInOut',
 }
 
-export function ResultsPage() {
+export const ResultsPage = memo(function ResultsPage() {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const selectedCity = useAppSelector((state) => state.weather.selectedCity)
 
-  const { data: weather, isLoading, error } = useGetWeatherQuery(
-    {
+  // Мемоизируем параметры запроса
+  const queryParams = useMemo(
+    () => ({
       latitude: selectedCity?.latitude || 0,
       longitude: selectedCity?.longitude || 0,
-    },
-    {
-      skip: !selectedCity,
-    }
+    }),
+    [selectedCity?.latitude, selectedCity?.longitude]
   )
 
-  const handleBack = () => {
+  const { data: weather, isLoading, error } = useGetWeatherQuery(queryParams, {
+    skip: !selectedCity,
+  })
+
+  const handleBack = useCallback(() => {
     dispatch(clearSelectedCity())
-  }
+  }, [dispatch])
 
   if (!selectedCity) {
     return null
@@ -94,5 +98,5 @@ export function ResultsPage() {
       </motion.div>
     </AnimatePresence>
   )
-}
+})
 

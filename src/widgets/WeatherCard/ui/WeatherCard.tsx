@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react'
 import { Box, Card, CardBody, VStack, HStack, Text, Heading } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useAppSelector } from '@/app/store'
@@ -8,18 +9,31 @@ interface WeatherCardProps {
   weather: CurrentWeather
 }
 
-export function WeatherCard({ weather }: WeatherCardProps) {
+export const WeatherCard = memo(function WeatherCard({ weather }: WeatherCardProps) {
   const { t } = useTranslation()
   const { temperatureUnit, windSpeedUnit } = useAppSelector((state) => state.settings)
+
+  // Мемоизируем форматированные значения
+  const formattedTemperature = useMemo(
+    () => formatTemperature(weather.temperature, temperatureUnit),
+    [weather.temperature, temperatureUnit]
+  )
+
+  const formattedWindSpeed = useMemo(
+    () => formatWindSpeed(weather.windSpeed, windSpeedUnit),
+    [weather.windSpeed, windSpeedUnit]
+  )
+
+  const weatherIcon = useMemo(() => getWeatherIcon(weather.weatherCode), [weather.weatherCode])
 
   return (
     <Card>
       <CardBody>
         <VStack spacing={4} align="stretch">
           <HStack justify="space-between">
-            <Box fontSize="6xl">{getWeatherIcon(weather.weatherCode)}</Box>
+            <Box fontSize="6xl">{weatherIcon}</Box>
             <VStack align="flex-end">
-              <Heading size="2xl">{formatTemperature(weather.temperature, temperatureUnit)}</Heading>
+              <Heading size="2xl">{formattedTemperature}</Heading>
               <Text fontSize="sm" color="gray.500">
                 {t('weather.current')}
               </Text>
@@ -40,7 +54,7 @@ export function WeatherCard({ weather }: WeatherCardProps) {
                 {t('weather.windSpeed')}
               </Text>
               <Text fontSize="lg" fontWeight="bold">
-                {formatWindSpeed(weather.windSpeed, windSpeedUnit)}
+                {formattedWindSpeed}
               </Text>
             </VStack>
             <VStack>
@@ -56,5 +70,5 @@ export function WeatherCard({ weather }: WeatherCardProps) {
       </CardBody>
     </Card>
   )
-}
+})
 
